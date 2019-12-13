@@ -36,8 +36,8 @@ while True:
         file.write(len+";")
 
     except:
-    break
-    print("break")
+        break
+        print("break")
 
 GPIO.cleanup()
 file1.close()
