@@ -23,7 +23,7 @@ while True:
         print('You Pressed q Key!')
         break  # finishing the loop
     print("start")
-
+    try:
         clkState = GPIO.input(clk)
         dtState = GPIO.input(dt)
         if clkState != clkLastState:
