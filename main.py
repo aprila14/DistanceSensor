@@ -18,7 +18,7 @@ counter = 0
 clkLastState = GPIO.input(clk)
 
 
-while n<100000:
+while n<1000000:
     try:
         clkState = GPIO.input(clk)
         dtState = GPIO.input(dt)

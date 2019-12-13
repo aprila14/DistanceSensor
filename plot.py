@@ -9,7 +9,8 @@ with open('datavalues.txt','r') as csvfile:
     for row in plots:
         x.append(int(row[0]))
         y.append(int(row[1]))
-
+print(x)
+print(y)
 plt.plot(x,y, label='Loaded from file!')
 plt.xlabel('x')
 plt.ylabel('y')
