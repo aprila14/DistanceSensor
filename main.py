@@ -37,6 +37,6 @@ while True:
         file.write(len+";")
 
 
-GPIO.cleanup()
+#GPIO.cleanup()
 file1.close() 
 
