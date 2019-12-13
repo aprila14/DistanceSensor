@@ -9,6 +9,7 @@ file1 = open("datavalues.txt","r+")
 clk = 17
 dt = 18
 
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(clk, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(dt, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -18,13 +19,11 @@ clkLastState = GPIO.input(clk)
 
 
 while True:
+    if keyboard.is_pressed('q'):  # if key 'q' is pressed 
+        print('You Pressed q Key!')
+        break  # finishing the loop
     print("start")
-    try:  # used try so that if user pressed other than the given key error will not be shown
-        print("tries")
-        if keyboard.is_pressed('A'):  # if key 'q' is pressed 
-            print('You Pressed q Key!')
-            break  # finishing the loop
-        
+    try:
         clkState = GPIO.input(clk)
         dtState = GPIO.input(dt)
         if clkState != clkLastState:
@@ -36,7 +35,10 @@ while True:
         len = counter*0.05
         file.write(len+";")
 
+    except:
+    break
+    print("break")
 
-#GPIO.cleanup()
-file1.close() 
-
+GPIO.cleanup()
+file1.close()
+print("file close and finish")
