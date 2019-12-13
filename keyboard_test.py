@@ -1,14 +1,15 @@
-from RPi import GPIO
+#from RPi import GPIO
 from time import sleep
 import time
-import keyboard
+import keyboard  # using module keyboard
+
 
 #open a file
-file = open("datavalues.txt","w+") 
+file1 = open("datavalues.txt","r+") 
+
 
 clk = 17
 dt = 18
-n=0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(clk, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -18,8 +19,13 @@ counter = 0
 clkLastState = GPIO.input(clk)
 
 
-while n<100000:
-    try:
+while True:
+    print("start")
+    try:  # used try so that if user pressed other than the given key error will not be shown
+        if keyboard.is_pressed('A'):  # if key 'q' is pressed 
+            print('You Pressed q Key!')
+            break  # finishing the loop
+        
         clkState = GPIO.input(clk)
         dtState = GPIO.input(dt)
         if clkState != clkLastState:
@@ -29,12 +35,12 @@ while n<100000:
                         counter -= 1
         clkLastState = clkState
         len = counter*0.05
-        file.write(str(len)+";")
-        n=n+1
+        file.write(len+";")
+    
     except:
-        print("break")
-        break
+        break  # if user pressed a key other than the given key the loop will break
 
+                
 GPIO.cleanup()
-file.close()
-print("file close and finish")
+file1.close() 
+
