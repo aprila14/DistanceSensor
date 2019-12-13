@@ -24,17 +24,20 @@ while True:
         break  # finishing the loop
     print("start")
 
-    clkState = GPIO.input(clk)
-    dtState = GPIO.input(dt)
-    if clkState != clkLastState:
-            if dtState != clkState:
-                    counter += 1
-            else:
-                    counter -= 1
-    clkLastState = clkState
-    len = counter*0.05
-    file.write(str(len)+";")
+        clkState = GPIO.input(clk)
+        dtState = GPIO.input(dt)
+        if clkState != clkLastState:
+                if dtState != clkState:
+                        counter += 1
+                else:
+                        counter -= 1
+        clkLastState = clkState
+        len = counter*0.05
+        file.write(str(len)+";")
 
+    except:
+        print("break")
+        break
 
 GPIO.cleanup()
 file.close()
