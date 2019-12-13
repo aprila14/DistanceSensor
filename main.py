@@ -33,7 +33,7 @@ while True:
                     counter -= 1
     clkLastState = clkState
     len = counter*0.05
-    file.write(len+";")
+    file.write(str(len)+";")
 
 
 GPIO.cleanup()
