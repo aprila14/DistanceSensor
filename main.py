@@ -8,7 +8,7 @@ file = open("datavalues.txt","r+")
 
 clk = 17
 dt = 18
-
+n=0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(clk, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -18,11 +18,7 @@ counter = 0
 clkLastState = GPIO.input(clk)
 
 
-while True:
-    if keyboard.is_pressed('q'):  # if key 'q' is pressed 
-        print('You Pressed q Key!')
-        break  # finishing the loop
-    print("start")
+while n<100:
     try:
         clkState = GPIO.input(clk)
         dtState = GPIO.input(dt)
@@ -34,7 +30,7 @@ while True:
         clkLastState = clkState
         len = counter*0.05
         file.write(str(len)+";")
-
+        n=n+1
     except:
         print("break")
         break
