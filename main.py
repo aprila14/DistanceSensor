@@ -23,21 +23,18 @@ while True:
         print('You Pressed q Key!')
         break  # finishing the loop
     print("start")
-    try:
-        clkState = GPIO.input(clk)
-        dtState = GPIO.input(dt)
-        if clkState != clkLastState:
-                if dtState != clkState:
-                        counter += 1
-                else:
-                        counter -= 1
-        clkLastState = clkState
-        len = counter*0.05
-        file.write(len+";")
 
-    except:
-        break
-        print("break")
+    clkState = GPIO.input(clk)
+    dtState = GPIO.input(dt)
+    if clkState != clkLastState:
+            if dtState != clkState:
+                    counter += 1
+            else:
+                    counter -= 1
+    clkLastState = clkState
+    len = counter*0.05
+    file.write(len+";")
+
 
 GPIO.cleanup()
 file1.close()
