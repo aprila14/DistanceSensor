@@ -35,10 +35,7 @@ while True:
         clkLastState = clkState
         len = counter*0.05
         file.write(len+";")
-    
-    except:
-        print("except")
-        break  # if user pressed a key other than the given key the loop will break
+
 
 GPIO.cleanup()
 file1.close() 
