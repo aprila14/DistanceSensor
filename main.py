@@ -4,7 +4,7 @@ import time
 import keyboard
 
 #open a file
-file1 = open("datavalues.txt","r+") 
+file = open("datavalues.txt","r+") 
 
 clk = 17
 dt = 18
@@ -37,5 +37,5 @@ while True:
 
 
 GPIO.cleanup()
-file1.close()
+file.close()
 print("file close and finish")
